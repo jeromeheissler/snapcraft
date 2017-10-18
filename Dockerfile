@@ -1,11 +1,7 @@
-FROM arm64v8/ubuntu:latest
+FROM multiarch/ubuntu-core:arm64-xenial
 MAINTAINER Jérôme Heissler "https://github.com/jeromeheissler"
 
 ENV SNAPCRAFT_VERSION=2.33
-ENV QEMU_STATIC_VERSION=v2.9.1
-
-# qemu-user-static
-ADD https://github.com/multiarch/qemu-user-static/releases/download/${QEMU_STATIC_VERSION}/qemu-aarch64-static.tar.gz /usr/bin/qemu-aarch64-static
 
 ENV DEBIAN_FRONTEND=noninteractive
 RUN sed -i "/^# deb.*universe/ s/^# //" /etc/apt/sources.list
