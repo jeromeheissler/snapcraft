@@ -1,4 +1,4 @@
-FROM multiarch/ubuntu-core:i386-xenial
+FROM multiarch/ubuntu-core:armhf-xenial
 MAINTAINER Jérôme Heissler "https://github.com/jeromeheissler"
 
 ENV SNAPCRAFT_VERSION=2.33
