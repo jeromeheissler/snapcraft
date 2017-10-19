@@ -18,6 +18,7 @@ after_success:
   - export REPO=jeromeheissler/snapcraft
   - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH ; fi`
   - docker build --build-arg SNAPCRAFT_VERSION=$SNAPCRAFT_VERSION -f Dockerfile -t $REPO:$SNAPCRAFT_VERSION-$TAG .
+  - docker tag $REPO:$SNAPCRAFT_VERSION-$TAG $REPO:$TAG
   - docker push $REPO
 branches:
   only:
