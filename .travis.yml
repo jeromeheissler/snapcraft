@@ -1,21 +1,23 @@
 sudo: required
-
 services:
-  - docker
-
+- docker
+language: php
+install:
+- echo "install nothing!"
+script:
+- echo "no tests!
 env:
   global:
-    - COMMIT=${TRAVIS_COMMIT::8}
-
+  - COMMIT=${TRAVIS_COMMIT::8}
 after_success:
-  - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
-  - export REPO=jeromeheissler/snapcraft
-  - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH ; fi`
-  - docker build -f Dockerfile -t $REPO:$COMMIT .
-  - docker tag $REPO:$COMMIT $REPO:$TAG
-  - docker tag $REPO:$COMMIT $REPO:$TRAVIS_BUILD_NUMBER
-  - docker push $REPO
-
+- docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
+- export REPO=jeromeheissler/snapcraft
+- export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH
+  ; fi`
+- docker build -f Dockerfile -t $REPO:$COMMIT .
+- docker tag $REPO:$COMMIT $REPO:$TAG
+- docker tag $REPO:$COMMIT $REPO:$TRAVIS_BUILD_NUMBER
+- docker push $REPO
 branches:
   only:
-  - /.*/
+  - "/.*/"
