@@ -24,17 +24,17 @@ $ docker run --rm --privileged multiarch/qemu-user-static:register --reset
 Then you can run an `armhf` image from your `x86_64` Docker host.
 
 ```console
-$ docker run -it --rm jeromeheissler/snapcraft:armhf-xenial
+$ ddocker run --rm -v $(pwd):/build jeromeheissler/snapcraft:armhf-xenial
 ```
 
 Or an `x86_64` image from your `x86_64` Docker host, directly, without qemu emulation.
 
 ```console
-$ docker run -it --rm jeromeheissler/snapcraft:amd64-xenial
+$ docker run --rm -v $(pwd):/build jeromeheissler/snapcraft:amd64-xenial
 ```
 
 It also works for `arm64`
 
 ```console
-$ docker run -it --rm jeromeheissler/snapcraft:arm64-xenial
+$ docker run --rm -v $(pwd):/build jeromeheissler/snapcraft:arm64-xenial
 ```
