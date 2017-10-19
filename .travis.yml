@@ -2,7 +2,11 @@ sudo: required
 
 services:
   - docker
-
+language: php
+install:
+  - echo "install nothing!"
+script:
+  - echo "no tests!"
 env:
   global:
     - COMMIT=${TRAVIS_COMMIT::8}
@@ -16,3 +20,6 @@ after_success:
   - docker tag $REPO:$COMMIT $REPO:$TAG
   - docker tag $REPO:$COMMIT $REPO:$TRAVIS_BUILD_NUMBER
   - docker push $REPO
+branches:
+  only:
+  - "/.*/"
