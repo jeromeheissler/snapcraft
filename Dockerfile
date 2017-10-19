@@ -1,7 +1,7 @@
 FROM multiarch/ubuntu-core:armhf-xenial
 MAINTAINER Jérôme Heissler "https://github.com/jeromeheissler"
 
-ENV SNAPCRAFT_VERSION=2.33
+ARG SNAPCRAFT_VERSION
 
 ENV DEBIAN_FRONTEND=noninteractive
 RUN sed -i "/^# deb.*universe/ s/^# //" /etc/apt/sources.list
